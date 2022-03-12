@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <Navbar />
+    <Navbar v-if="this.$router.currentRoute.name !== 'login'" />
     <div class="app-inner">
       <router-view />
     </div>
