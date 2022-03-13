@@ -103,14 +103,23 @@ def getData(excel_name):
                 drawdown= str(df['Drawdown %'][x])
                     
                 if traiding != 'nan':
-                    lista1.append(clean_text(traiding))
-                    lista2.append(clean_text(type))
-                    lista3.append(clean_text(symbol))
-                    lista4.append(clean_text(signal))
-                    lista5.append(clean_text(date))
-                    lista6.append(clean_text(price))
-                    lista7.append(clean_text(profit))
-                    lista8.append(clean_text(drawdown))
+                    if type == 'Entry Long':
+                        lista1.append(clean_text(traiding))
+                        lista2.append(clean_text(type))
+                        lista3.append(clean_text(symbol))
+                        lista4.append(clean_text(signal))
+                        lista5.append(clean_text(date))
+                        lista6.append(clean_text(price))
+                        lista7.append(clean_text(profit))
+                        lista8.append(clean_text(drawdown))
+                    
+                    elif type == 'Exit Long' and lista1[-1] == traiding:
+                        listaStatus.append(clean_text('Closed'))
+                        listaCerrada.append(clean_text(date))
+                        listaPrecioCerrado.append(clean_text(price))
+                    
+                    else:
+                        print("signal",signal)
         
 lista1 = []
 lista2 = []
@@ -120,23 +129,48 @@ lista5 = []
 lista6 = []
 lista7 = []
 lista8 = []
+listaCerrada = []
+listaStatus = []
+listaPrecioCerrado = []
+listaEquity = []
 
 execute_excel()
 
 print("lista1",len(lista1))
 print("lista2",len(lista2))
+print("listaCerrada",len(listaCerrada))
+print("listaPrecioCerrado",len(listaPrecioCerrado))
 
-df = pd.DataFrame({'trade': lista1,
-    'type': lista2,
-    'symbol': lista3,
-    'signal': lista4,
+profColum = lista7
+
+for i in profColum:
+    print("i",i)
+    listaEquity.append(str(((int(100000)* float(i)) / int(100))+int(100000)))
+
+print("listaEquity",len(listaEquity))
+
+max_value = None
+
+for num in lista8:
+    if (max_value is None or num > max_value):
+        max_value = num
+
+print('Maximum value:', max_value)
+
+
+df = pd.DataFrame({
     'date': lista5,
+    'trade': lista1,
+    'symbol': lista3,
     'price': lista6,
+    'listaPrecioCerrado': listaPrecioCerrado,
+    'Status': listaStatus,
+    'ClosePrice': listaCerrada,
     'profit': lista7,
-    'drawdown': lista8,
+    'profColum': profColum,
+    'listaEquity': listaEquity,
     })
 
 js = df.to_json('process_data/salida.json',orient = 'records')
-print(js)
 
 #Close actividad1.txt
