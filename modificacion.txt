@@ -1,0 +1,4 @@
+Color de .select:focus cambiar de morado
+agregar a la etiqueta table class table is-striped ah table is-dark
+
+

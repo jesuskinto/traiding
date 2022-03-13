@@ -21,7 +21,7 @@
         />
       </div>
     </div>
-    <button class="button is-primary" @click="login">Sign in</button>
+    <button class="button is-success" @click="login">Sign in</button>
   </form>
 </template>
 <script>
@@ -53,5 +53,18 @@ export default {
   left: 0;
   bottom: 0;
   right: 0;
+}
+.box {
+  background-color: rgba(19, 35, 47, 0.9);
+}
+.label {
+  color: white;
+}
+.input {
+  background-color: rgba(19, 35, 47, 0.9);
+  color: white;
+}
+.select:focus {
+  border-color: green;
 }
 </style>

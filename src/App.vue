@@ -20,4 +20,11 @@ export default {
 .app-inner {
   padding: 10px 20px;
 }
+#app {
+  background-color: rgba(19, 35, 47, 0.9);
+  height: 2000px;
+}
+body {
+  background-color: rgba(19, 35, 47, 0.9);
+}
 </style>
