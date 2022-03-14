@@ -1,4 +1,7 @@
-Color de .select:focus cambiar de morado
-agregar a la etiqueta table class table is-striped ah table is-dark
-
-
+Modificaciones:
+    * Completado columnas de datos (Punto 1)
+    * Agregado tiempo de data (abierto y cerrado) (Punto 2)
+    * Calculo del dato mas alto de Drawdown %  (Punto 3)
+    * Columna profColum % (Punto 4) Nota: el % de Prof -> profColum % no esta en el excel (tome el mismo dato Prof)
+    * Calculo de los Entity (Punto 5) 
+    * Columna Status (data de ejemplo todas son cerradas)
